@@ -1,0 +1,123 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AiQFome GrandChef API System Documentation",
+        "description": "API Documentation for GrandChef system",
+        "contact": {
+            "name": "Thiago",
+            "email": "thiiagoms@proton.me"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/categories": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Create new category",
+                "description": "Create a new category and receive the category data upon successful creation.",
+                "operationId": "571b9543537cd1b4c0b06385e8fca129",
+                "requestBody": {
+                    "description": "Category data for creation",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterCategoryVirtualRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RegisterCategoryVirtualResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The server could not process the request due to invalid input."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RegisterCategoryVirtualRequest": {
+                "title": "Register category request example",
+                "description": "Base request for CRUD operations about category",
+                "properties": {
+                    "name": {
+                        "description": "The category name",
+                        "type": "string",
+                        "example": "Bebidas"
+                    },
+                    "description": {
+                        "description": "The category description",
+                        "type": "string",
+                        "example": "Tipos de bebidas alcoólicas e não alcoólicas",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterCategoryVirtualResponse": {
+                "title": "Category created response",
+                "description": "Default response for category register request",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "description": "The unique identifier of the category.",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "description": "The category name",
+                        "type": "string",
+                        "example": "Bebidas"
+                    },
+                    "description": {
+                        "description": "The category description",
+                        "type": "string",
+                        "example": "Tipos de bebidas alcoólicas e não alcoólicas",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "The date and time when the category was created",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-10-27 23:00:00"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "The date and time when the category was updated",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-10-27 23:00:00"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Category",
+            "description": "Category"
+        }
+    ]
+}

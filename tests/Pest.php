@@ -11,9 +11,14 @@
 |
 */
 
-pest()->extend(Tests\TestCase::class)
- // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+pest()
+    ->extend(Tests\TestCase::class)
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Feature');
+
+pest()
+    ->extend(Tests\TestCase::class)
+    ->in('Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +50,19 @@ function something()
 {
     // ..
 }
+
+/*
+|--------------------------------------------------------------------------
+| Common Endpoints
+|--------------------------------------------------------------------------
+|
+| Defining common endpoints in a centralized place helps maintain consistency
+| across your application. These endpoints can be referenced globally, making
+| it easier to manage and update URLs used throughout your project. This
+| approach reduces duplication and ensures that changes to endpoints are
+| reflected uniformly across all components.
+|
+*/
+const CATEGORY_ENDPOINT = '/api/categories';
+const PRODUCT_ENDPOINT = '/api/products';
+const ORDER_ENDPOINT = '/api/orders';
