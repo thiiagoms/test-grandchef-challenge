@@ -7,6 +7,8 @@ use App\Contracts\Services\Category\Destroy\DestroyCategoryServiceContract;
 use App\Contracts\Services\Category\Find\FindCategoryByIdServiceContract;
 use App\Contracts\Services\Category\Register\RegisterCategoryServiceContract;
 use App\Contracts\Services\Category\Update\UpdateCategoryServiceContract;
+use App\Contracts\Services\Order\Calculator\CalculateOrderPriceServiceContract;
+use App\Contracts\Services\Order\Register\RegisterOrderServiceContract;
 use App\Contracts\Services\Product\All\ProductAllServiceContract;
 use App\Contracts\Services\Product\Destroy\DestroyProductServiceContract;
 use App\Contracts\Services\Product\Find\FindProductByIdServiceContract;
@@ -17,6 +19,8 @@ use App\Services\Category\Destroy\DestroyCategoryService;
 use App\Services\Category\Find\FindCategoryByIdService;
 use App\Services\Category\Register\RegisterCategoryService;
 use App\Services\Category\Update\UpdateCategoryService;
+use App\Services\Order\Calculator\CalculateOrderPriceService;
+use App\Services\Order\Register\RegisterOrderService;
 use App\Services\Product\All\ProductAllService;
 use App\Services\Product\Destroy\DestroyProductService;
 use App\Services\Product\Find\FindProductByIdService;
@@ -39,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
         FindProductByIdServiceContract::class => FindProductByIdService::class,
         DestroyProductServiceContract::class => DestroyProductService::class,
         ProductAllServiceContract::class => ProductAllService::class,
+        /** Order */
+        RegisterOrderServiceContract::class => RegisterOrderService::class,
+        CalculateOrderPriceServiceContract::class => CalculateOrderPriceService::class,
     ];
 
     /**

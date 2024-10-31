@@ -2,41 +2,30 @@
 
 namespace App\Http\Controllers\Api\Order;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\Register\RegisterOrderRequest;
 use App\Http\Requests\Order\Update\UpdateOrderRequest;
+use App\Http\Resources\Order\OrderResource;
 use App\Models\Order;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
-class OrderApiController extends Controller
+class OrderApiController extends BaseOrderApiController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function store(RegisterOrderRequest $request): OrderResource
     {
-        //
-    }
+        $order = $this->registerOrderService
+            ->with($request->validated())
+            ->handle();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(RegisterOrderRequest $request)
-    {
-        dd($request->validated());
-
-        // $order = Order::create([
-        //     'status' => OrderStatusEnum::OPEN->value,
-        //     'total_price' => 12,
-        // ]);
-
+        return OrderResource::make($order);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Order $order): OrderResource
     {
-        //
+        return OrderResource::make($order);
     }
 
     /**
@@ -50,8 +39,10 @@ class OrderApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy(Order $order): JsonResponse
     {
-        //
+        $order->delete();
+
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }

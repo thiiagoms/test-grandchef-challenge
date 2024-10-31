@@ -29,17 +29,16 @@ class RegisterOrderRequest extends BaseOrderRequest
             ],
             'products.*.product_id' => [
                 'required',
-                'uuid',
                 'exists:products,id',
+            ],
+            'products.*.price' => [
+                'required',
+                'gt:0',
+                'numeric',
             ],
             'products.*.quantity' => [
                 'required',
                 'integer',
-                'gt:0',
-            ],
-            'products.*.price' => [
-                'required',
-                'numeric',
                 'gt:0',
             ],
         ];

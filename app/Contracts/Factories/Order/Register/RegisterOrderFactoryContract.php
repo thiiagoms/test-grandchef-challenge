@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Contracts\Factory\Order\Register;
+namespace App\Contracts\Factories\Order\Register;
 
 use App\DTO\Order\Register\RegisterOrderDTO;
-use App\Factory\Order\Register\RegisterOrderFactory;
+use App\Factories\Order\Register\RegisterOrderFactory;
 
 interface RegisterOrderFactoryContract
 {

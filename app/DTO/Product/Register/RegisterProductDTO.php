@@ -29,8 +29,6 @@ class RegisterProductDTO extends BaseDTO implements RegisterProductDTOContract
 
     public static function fromArray(array $payload): RegisterProductDTO
     {
-        $payload = clean($payload);
-
         $payload['price'] = (float) $payload['price'];
 
         return new self(...$payload);

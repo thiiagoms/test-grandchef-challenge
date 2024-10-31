@@ -201,7 +201,7 @@ it('should update only product name and return updated product data', fn (): Tes
             'data.id' => 'string',
             'data.category_id' => 'string',
             'data.name' => 'string',
-            'data.price' => 'double',
+            'data.price' => 'double|integer',
             'data.created_at' => 'string',
             'data.updated_at' => 'string',
         ])

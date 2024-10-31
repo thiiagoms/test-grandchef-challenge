@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Factory\Order\Register;
+namespace App\Factories\Order\Register;
 
-use App\Contracts\Factory\Order\Register\RegisterOrderFactoryContract;
+use App\Contracts\Factories\Order\Register\RegisterOrderFactoryContract;
+use App\DTO\Order\Register\RegisterOrderDTO;
 use App\DTO\Product\Register\RegisterProductDTO;
 
 class RegisterOrderFactory implements RegisterOrderFactoryContract
 {
-    private array $data = [];
+    private array $data;
 
     public function with(array $data): RegisterOrderFactory
     {
@@ -23,7 +24,7 @@ class RegisterOrderFactory implements RegisterOrderFactoryContract
      */
     public function make(): array
     {
-        $registerProductDTO = array_map(fn (array $data) => RegisterProductDTO::fromArray($data), $this->data);
+        $registerProductDTO = array_map(fn (array $data) => RegisterOrderDTO::fromArray($data), $this->data['products']);
 
         return $registerProductDTO;
     }

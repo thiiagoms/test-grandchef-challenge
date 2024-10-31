@@ -22,6 +22,8 @@ class RegisterOrderDTO implements RegisterOrderDTOContract
 
         $payload['price'] = (float) $payload['price'];
 
+        $payload['quantity'] = (int) $payload['quantity'];
+
         return new self(...$payload);
     }
 

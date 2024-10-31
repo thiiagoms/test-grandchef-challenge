@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum(
                 'status',
                 array_map(fn (OrderStatusEnum $status): string => $status->value, OrderStatusEnum::cases())
-            )->default(OrderStatusEnum::OPEN->value);
+            );
             $table->decimal('total_price', 10, 2);
             $table->timestamps();
         });
